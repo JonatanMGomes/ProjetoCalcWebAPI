@@ -1,18 +1,40 @@
+using ProjetoCalcWebAPI.Web.MinhasExceptions;
+
 namespace ProjetoCalcWebAPI.Web.Models
 {
     public class Calculadora
     {
-        public int Soma(int num1, int num2){
-            return num1+num2;
+        public int Soma(int num1, int num2)
+        {
+            if (ValidarNumero(num1) && ValidarNumero(num2))
+            {
+                return num1 + num2;
+            }
+            throw new InputIncorreto("Número(s) invalido(s)!");
         }
-        public int Subtracao(int num1, int num2){
-            return num1-num2;
+        public int Subtracao(int num1, int num2)
+        {
+            if (ValidarNumero(num1) && ValidarNumero(num2))
+            {
+                return num1 - num2;
+            }
+            throw new InputIncorreto("Número(s) invalido(s)!");
         }
-        public double Multiplicacao(int num1, int num2){
-            return num1*num2;
+        public double Multiplicacao(int num1, int num2)
+        {
+            if (ValidarNumero(num1) && ValidarNumero(num2) && ValidarNumeroSemNegativos(num1) && ValidarNumeroSemNegativos(num2))
+            {
+                return num1 * num2;
+            }
+            throw new InputIncorreto("Número(s) invalido(s)!");
         }
-        public double Divisao(int num1, int num2){
-            return num1/num2;
+        public double Divisao(int num1, int num2)
+        {
+            if (ValidarNumero(num1) && ValidarNumero(num2) && ValidarNumeroSemNegativos(num1) && ValidarNumeroSemNegativos(num2))
+            {
+                return num1 / num2;
+            }
+            throw new InputIncorreto("Número(s) invalido(s)!");
         }
         public bool ValidarNumero(double valor)
         {
