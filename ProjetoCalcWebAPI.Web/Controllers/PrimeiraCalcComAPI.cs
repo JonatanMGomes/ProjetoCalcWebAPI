@@ -20,12 +20,16 @@ namespace ProjetoCalcWebAPI.Web.Controllers
         [HttpGet("SomaComCalculadora")]
         public IActionResult SomaAPIComCalculadora(int primeiroNum, int segundoNum)
         {
-            if (primeiroNum == 0 || primeiroNum > 999 || segundoNum == 0 || segundoNum > 999)
+            try
             {
-                return BadRequest("Parâmetro(s) inválido(s), nenhum dos parâmetros pode ser igual a 0 ou maior que 999.");
+                var calc = new Calculadora();
+                var resultado = calc.Soma(primeiroNum, segundoNum);
+                return Ok(resultado);
             }
-            var calc = new Calculadora();
-            return Ok($"O resultado da soma é: {calc.Soma(primeiroNum, segundoNum)}");
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpGet("Subtração")]
         public IActionResult SubtracaoAPI(int primeiroNum, int segundoNum)
@@ -40,12 +44,16 @@ namespace ProjetoCalcWebAPI.Web.Controllers
         [HttpGet("SubtraçãoComCalculadora")]
         public IActionResult SubtracaoAPIComCalculadora(int primeiroNum, int segundoNum)
         {
-            if (primeiroNum == 0 || primeiroNum > 999 || segundoNum == 0 || segundoNum > 999)
+            try
             {
-                return BadRequest("Parâmetro(s) inválido(s), nenhum dos parâmetros pode ser igual a 0 ou maior que 999.");
+                var calc = new Calculadora();
+                var resultado = calc.Subtracao(primeiroNum, segundoNum);
+                return Ok(resultado);
             }
-            var calc = new Calculadora();
-            return Ok($"O resultado da soma é: {calc.Subtracao(primeiroNum, segundoNum)}");
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpGet("Multiplicação")]
         public IActionResult MultiplicacaoAPI(int primeiroNum, int segundoNum)
@@ -64,16 +72,16 @@ namespace ProjetoCalcWebAPI.Web.Controllers
         [HttpGet("MultiplicaçãoComCalculadora")]
         public IActionResult MultiplicacaoAPIComCalculadora(int primeiroNum, int segundoNum)
         {
-            if (primeiroNum == 0 || primeiroNum > 999 || segundoNum == 0 || segundoNum > 999)
+            try
             {
-                return BadRequest("Parâmetro(s) inválido(s), nenhum dos parâmetros pode ser igual a 0 ou maior que 999.");
+                var calc = new Calculadora();
+                var resultado = calc.Multiplicacao(primeiroNum, segundoNum);
+                return Ok(resultado);
             }
-            if (primeiroNum < 0 || segundoNum < 0)
+            catch (System.Exception ex)
             {
-                return BadRequest("Parâmetro inválido, nenhum dos parâmetros pode ser menor que 0.");
+                return BadRequest(ex.Message);
             }
-            var calc = new Calculadora();
-            return Ok($"O resultado da soma é: {calc.Multiplicacao(primeiroNum, segundoNum)}");
         }
         [HttpGet("Divisão")]
         public IActionResult DivisaoAPI(int primeiroNum, int segundoNum)
@@ -92,16 +100,16 @@ namespace ProjetoCalcWebAPI.Web.Controllers
         [HttpGet("DivisãoComCalculadora")]
         public IActionResult DivisaoAPIComCalculadora(int primeiroNum, int segundoNum)
         {
-            if (primeiroNum == 0 || primeiroNum > 999 || segundoNum == 0 || segundoNum > 999)
+            try
             {
-                return BadRequest("Parâmetro(s) inválido(s), nenhum dos parâmetros pode ser igual a 0 ou maior que 999.");
+                var calc = new Calculadora();
+                var resultado = calc.Divisao(primeiroNum, segundoNum);
+                return Ok(resultado);
             }
-            if (primeiroNum < 0 || segundoNum < 0)
+            catch (System.Exception ex)
             {
-                return BadRequest("Parâmetro inválido, nenhum dos parâmetros pode ser menor que 0.");
+                return BadRequest(ex.Message);
             }
-            var calc = new Calculadora();
-            return Ok($"O resultado da soma é: {calc.Divisao(primeiroNum, segundoNum)}");
         }
     }
 }
