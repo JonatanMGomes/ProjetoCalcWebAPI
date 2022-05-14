@@ -23,7 +23,7 @@ namespace ProjetoCalcWebAPI.Web.Controllers
             try
             {
                 var calc = new Calculadora();
-                var resultado = calc.Soma(primeiroNum, segundoNum);
+                var resultado = calc.Somar(primeiroNum, segundoNum);
                 return Ok(resultado);
             }
             catch (System.Exception ex)
@@ -47,7 +47,7 @@ namespace ProjetoCalcWebAPI.Web.Controllers
             try
             {
                 var calc = new Calculadora();
-                var resultado = calc.Subtracao(primeiroNum, segundoNum);
+                var resultado = calc.Subtrair(primeiroNum, segundoNum);
                 return Ok(resultado);
             }
             catch (System.Exception ex)
@@ -75,7 +75,7 @@ namespace ProjetoCalcWebAPI.Web.Controllers
             try
             {
                 var calc = new Calculadora();
-                var resultado = calc.Multiplicacao(primeiroNum, segundoNum);
+                var resultado = calc.Multiplicar(primeiroNum, segundoNum);
                 return Ok(resultado);
             }
             catch (System.Exception ex)
@@ -103,7 +103,7 @@ namespace ProjetoCalcWebAPI.Web.Controllers
             try
             {
                 var calc = new Calculadora();
-                var resultado = calc.Divisao(primeiroNum, segundoNum);
+                var resultado = calc.Dividir(primeiroNum, segundoNum);
                 return Ok(resultado);
             }
             catch (System.Exception ex)
